@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApi.Model;
+using WebApi.Domain.Model;
 
 namespace WebApi.Infraestrutura
 {
-	public class ConnectionContext : DbContext
+    public class ConnectionContext : DbContext
 	{
 		public DbSet<Employee> Employees { get; set; }
 

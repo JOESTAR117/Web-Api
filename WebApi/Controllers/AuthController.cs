@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApi.Services;
+using WebApi.Application.Services;
 
 namespace WebApi.Controllers
 {
-	[ApiController]
+    [ApiController]
 	[Route("api/v1/auth")]
 	public class AuthController : Controller
 	{
@@ -12,7 +12,7 @@ namespace WebApi.Controllers
 		{
 			if (username == "jackson" && password == "123456")
 			{
-				var token = TokenService.GenerateToken(new Model.Employee());
+				var token = TokenService.GenerateToken(new Domain.Model.Employee());
 				return Ok(token);
 			}
 			return BadRequest("username or password invalid");

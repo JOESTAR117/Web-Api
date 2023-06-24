@@ -1,4 +1,5 @@
-﻿using WebApi.Model;
+﻿using WebApi.Domain.DTOs;
+using WebApi.Domain.Model;
 
 namespace WebApi.Infraestrutura.Repositories
 {
@@ -12,9 +13,17 @@ namespace WebApi.Infraestrutura.Repositories
 			_context.SaveChanges();
 		}
 
-		public List<Employee> Get(int pageNumber, int pageQuantity)
+		public List<EmployeeDTO> Get(int pageNumber, int pageQuantity)
 		{
-			return _context.Employees.Skip(pageNumber * pageQuantity).Take(pageQuantity).ToList();
+			return _context.Employees.Skip(pageNumber * pageQuantity)
+				.Take(pageQuantity)
+				.Select(b =>
+				new EmployeeDTO()
+				{
+					Id = b.id,
+					NameEmployee = b.name,
+					Photo = b.photo,
+				}).ToList();
 		}
 
 		public Employee? Get(int id)

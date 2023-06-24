@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Model;
-using WebApi.ViewModel;
+using WebApi.Application.ViewModel;
+using WebApi.Domain.Model;
 
 namespace WebApi.Controllers
 {
-	[ApiController]
+    [ApiController]
 	[Route("api/v1/employee")]
 	public class EmployeeController : ControllerBase
 	{
