@@ -46,11 +46,10 @@ namespace WebApi.Controllers
 			return File(dataBytes, "image/png", "image/jpg");
 		}
 
-		[Authorize]
 		[HttpGet]
-		public IActionResult Get()
+		public IActionResult Get(int pageNumber, int pageQuantity)
 		{
-			var employees = _employeeRepository.Get();
+			var employees = _employeeRepository.Get(pageNumber, pageQuantity);
 			return Ok(employees);
 		}
 	}
