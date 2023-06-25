@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using WebApi.Application.Mapping;
 using WebApi.Domain.Model;
 using WebApi.Infraestrutura.Repositories;
 
@@ -10,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -75,7 +79,8 @@ if (app.Environment.IsDevelopment())
 	app.UseExceptionHandler("/error=development");
 	app.UseSwagger();
 	app.UseSwaggerUI();
-}else
+}
+else
 {
 	app.UseExceptionHandler("/error");
 }
